@@ -33,6 +33,9 @@ def main():
     if not text.strip():
         print("entry must not be only whitespace", file=sys.stderr)
         return 1
+    if "\n" in text or "\r" in text:
+        print("entry must be a single line (no newline characters)", file=sys.stderr)
+        return 1
     path = resolve_output_path()
     parent = os.path.dirname(path)
     if parent:
